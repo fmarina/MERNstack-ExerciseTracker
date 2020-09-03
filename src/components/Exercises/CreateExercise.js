@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import DatePicker from "react-datepicker"; 
 import "react-datepicker/dist/react-datepicker.css";
+import { useHistory } from 'react-router-dom';
 
 const CreateExercise = () => {
     const [username, setUsername] = useState("");
@@ -9,6 +10,8 @@ const CreateExercise = () => {
     const [date, setDate] = useState(new Date());
     const [users, setUsers] = useState([]);
     const userInput = useRef(null);
+
+    const history = useHistory();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -19,6 +22,7 @@ const CreateExercise = () => {
             date
         }
         console.log(exercise);
+        history.goBack();
     }
 
     return (
