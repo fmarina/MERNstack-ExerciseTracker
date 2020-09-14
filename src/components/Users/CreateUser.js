@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 
 const CreateUser = () => {
@@ -7,11 +8,13 @@ const CreateUser = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const user = {
-            username
-        }
-        console.log(user);
+        const user = { username }
+
+        axios.post('http://localhost:5000/users/add', user)
+          .then(res => console.log(res.data));
+
         history.goBack();
+        setUsername("");
     }
 
     return (
