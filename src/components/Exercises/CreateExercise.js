@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import DatePicker from "react-datepicker"; 
 import "react-datepicker/dist/react-datepicker.css";
@@ -10,7 +10,6 @@ const CreateExercise = () => {
     const [duration, setDuration] = useState(0);
     const [date, setDate] = useState(new Date());
     const [users, setUsers] = useState([]);
-    const userInput = useRef(null);
 
     const history = useHistory();
 
@@ -39,7 +38,7 @@ const CreateExercise = () => {
         axios.post('http://localhost:5000/exercises/add', exercise)
           .then(res => console.log(res.data));
 
-        history.goBack();
+        history.push('/')
     }
 
     return (
